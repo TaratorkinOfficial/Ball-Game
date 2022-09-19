@@ -9,33 +9,26 @@ using static Unity.VisualScripting.Member;
 
 public class PhysicBall : MonoBehaviour
 {
-    private Transform _tr;
+    public LayerMask layerMask;
     public Transform _tr1;
-    private Vector3 _pos;
-    private bool isGronded;
-    public bool isRolling;
-    private bool _timerOn;
-    private float _timeLeft;
-    private float _lower;
+    [SerializeField]private GameObject smashFX;
+    [HideInInspector]  public bool isRolling;
     [HideInInspector] public float invT;
     [HideInInspector] public int colInt;
-    private Vector3 vel;
+    private Transform _tr;
+    private bool isGronded;
+    private float _lower;
     private Quaternion toRotation;
-    private Vector3 vell6;
-    private Vector3 vell5;
+    private Vector3 vel;
     private Vector3 vell;
-    private Vector3 vell4;
-    private Vector3 vell3;
-    private Vector3 vell2;
-    private Vector3 grav;
-    [SerializeField]private float time;
-    [SerializeField]private GameObject ball;
-    [SerializeField]private GameObject smashFX;
-    public bool isFlying;
-    private GameObject col;
-    public LayerMask layerMask;
-    private Vector3 actualForce;
     private Vector3 vell1;
+    private Vector3 vell2;
+    private Vector3 vell3;
+    private Vector3 vell4;
+    private Vector3 vell5;
+    private Vector3 grav;
+    private GameObject col;
+    private Vector3 actualForce;
     private ParticleSystem _smash;
 
     [HideInInspector] public Vector3 pos { get { return transform.position; } }
@@ -89,7 +82,6 @@ public class PhysicBall : MonoBehaviour
                     case 6:
                         vel = Vector3.Reflect(vell5, col.transform.forward) * _lower * 70;
                         toRotation = Quaternion.LookRotation(Vector3.Reflect(vel, Vector3.up));
-                        vell6 = vel;
                         break;
                 }
                 Vector3 vel1 = vel;
